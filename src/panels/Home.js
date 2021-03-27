@@ -1,23 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, ListItem, Button, Group, Div, Avatar, PanelHeader } from '@vkontakte/vkui';
+
+import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
+import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
+import Header from '@vkontakte/vkui/dist/components/Header/Header';
+import Button from '@vkontakte/vkui/dist/components/Button/Button';
+import Group from '@vkontakte/vkui/dist/components/Group/Group';
+import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
+import Div from '@vkontakte/vkui/dist/components/Div/Div';
+import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
 		<PanelHeader>Example</PanelHeader>
 		{fetchedUser &&
-		<Group title="User Data Fetched with VK Connect">
-			<ListItem
+		<Group header={<Header mode="secondary">User Data Fetched with VK Bridge</Header>}>
+			<Cell
 				before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
 				description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
 			>
 				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-			</ListItem>
+			</Cell>
 		</Group>}
 
-		<Group title="Navigation Example">
+		<Group header={<Header mode="secondary">Navigation Example</Header>}>
 			<Div>
-				<Button size="xl" level="2" onClick={go} data-to="persik">
+				<Button stretched size="l" mode="secondary" onClick={go} data-to="persik">
 					Show me the Persik, please
 				</Button>
 			</Div>
